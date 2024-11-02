@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -16,19 +17,24 @@ public class PlayerMovement : MonoBehaviour
     [Header("Stats")]
     public int healthAmount;
     public float jumpForce;
-    public LayerMask groundLayer;
-    public Transform feet;
+    public bool isDay;
     float moveDir;
     private Rigidbody2D rb;
     private bool isGrounded;
     private int currentJumps;
+    private int maxJumps;
+    private float moveSpeed;
+    Animator animator;
     
 
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        currentJumps = dayMaxJumps;
+        animator = GetComponent<Animator>();
+        maxJumps = dayMaxJumps;
+        moveSpeed = dayMoveSpeed;
+        isDay = true;
     }
 
     // Update is called once per frame
@@ -36,37 +42,51 @@ public class PlayerMovement : MonoBehaviour
     {
         //Movement direction
         moveDir = Input.GetAxisRaw("Horizontal");
+        animator.SetFloat("xVelocity", Math.Abs(rb.velocity.x));
+        animator.SetFloat("yVelocity", rb.velocity.y);
 
-        if((Input.GetButtonDown("Jump") || Input.GetKeyDown(KeyCode.W)) && currentJumps > 0) {
+        //Turn player according to movement
+        if (moveDir > 0f)
+        {
+            transform.localScale = new Vector3(3f, 3f, 4f);
+        }
+        else if(moveDir < 0f)
+        {
+            transform.localScale = new Vector3(-3f, 3f, 4f);
+        }
+
+        //Jumping
+        if((Input.GetButtonDown("Jump") || Input.GetKeyDown(KeyCode.W)) && currentJumps < maxJumps) {
+            currentJumps += 1;
+            isGrounded = false;
+            animator.SetBool("isJumping", !isGrounded);
             Jump();
         }
 
-        //If on the ground, reset jumps
-        if(IsGrounded()) {
-            currentJumps = dayMaxJumps;
+        //Switch between day and night mode movement
+        if(Input.GetKeyDown(KeyCode.E)) {
+            isDay = !isDay;
+            maxJumps = isDay ? dayMaxJumps : nightMaxJumps;
+            moveSpeed =  isDay ? dayMoveSpeed : nightMoveSpeed;
         }
         
     }
 
     private void FixedUpdate() {
-        Vector2 movement = new Vector2(dayMoveSpeed * moveDir, rb.velocity.y);
+        Vector2 movement = new Vector2(moveSpeed * moveDir, rb.velocity.y);
 
         rb.velocity = movement;
     }
 
     private void Jump(){
         Vector2 jump = new Vector2(rb.velocity.x, jumpForce);
-        currentJumps -= 1;
+        
         rb.velocity = jump;
     }
 
-    private bool IsGrounded() {
-        Collider2D groundCheck = Physics2D.OverlapCircle(feet.position, 0.1f, groundLayer);
-
-        if(groundCheck != null) {
-            return true;
-        }
-
-        return false;
+    private void OnTriggerEnter2D(Collider2D other) {
+        isGrounded = true;
+        currentJumps = 0;
+        animator.SetBool("isJumping", !isGrounded);
     }
 }
