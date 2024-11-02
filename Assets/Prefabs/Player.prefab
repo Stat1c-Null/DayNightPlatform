@@ -179,9 +179,8 @@ MonoBehaviour:
   nightMaxJumps: 3
   healthAmount: 3
   jumpForce: 5
-  isDay: 0
-  nightAnimator: {fileID: 0}
-  dayAnimator: {fileID: 0}
+  nightAnimator: {fileID: 8292560651337931580, guid: 6ed048791c906b547aab80f6e7860492, type: 3}
+  dayAnimator: {fileID: -5730157838294779843, guid: 183c33617b8997d42bd14d27d1ba7cb5, type: 3}
 --- !u!95 &6379862655031485475
 Animator:
   serializedVersion: 5
