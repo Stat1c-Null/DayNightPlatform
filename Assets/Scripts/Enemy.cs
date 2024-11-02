@@ -90,7 +90,7 @@ public class Enemy : MonoBehaviour
         {
 
             // If ray hits the player, do something (e.g., chase the player)
-
+            IsEnemyHit = true;
             death();
 
         }

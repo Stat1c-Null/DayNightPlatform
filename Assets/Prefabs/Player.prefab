@@ -15,7 +15,8 @@ GameObject:
   - component: {fileID: 5624813737156659351}
   - component: {fileID: 6379862655031485475}
   - component: {fileID: 5802747376544424969}
-  m_Layer: 0
+  - component: {fileID: 8124275914007850428}
+  m_Layer: 8
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -179,7 +180,6 @@ MonoBehaviour:
   nightMaxJumps: 3
   healthAmount: 3
   jumpForce: 5
-  isDay: 0
   nightAnimator: {fileID: 9100000, guid: ccc2b7f49fc2f484a9234770b2239b80, type: 2}
   dayAnimator: {fileID: 9100000, guid: bb387749cf777564596ab2dba5ff4cfb, type: 2}
 --- !u!95 &6379862655031485475
@@ -238,3 +238,15 @@ CapsuleCollider2D:
   m_Offset: {x: 0.004148988, y: 0.063045636}
   m_Size: {x: 0.21003205, y: 0.08411601}
   m_Direction: 1
+--- !u!114 &8124275914007850428
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4968448132497215477}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2ac23a6a9b27fc34a8ec1cc0fd235869, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
