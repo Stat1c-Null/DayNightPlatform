@@ -13,12 +13,6 @@ public class MoveBlock : MonoBehaviour
 
     int direction = 1;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
     // Update is called once per frame
     void Update()
     {
@@ -43,6 +37,20 @@ public class MoveBlock : MonoBehaviour
         else
         {
             return end.position;
+        }
+    }
+
+    //this is what I added since last time
+    private void OnTriggerEnter2D(Collider2D c)
+    {
+        if (c.CompareTag("Player")){
+            c.transform.SetParent(platform.transform);
+        }
+    }
+    private void OnTriggerExit2D(Collider2D c)
+    {
+        if (c.CompareTag("Player")){
+            c.transform.SetParent(null);
         }
     }
 }
