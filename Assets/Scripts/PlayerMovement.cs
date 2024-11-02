@@ -25,6 +25,9 @@ public class PlayerMovement : MonoBehaviour
     private int maxJumps;
     private float moveSpeed;
     Animator animator;
+    [Header("Day/Night Animators")]
+    public RuntimeAnimatorController nightAnimator;
+    public RuntimeAnimatorController dayAnimator;
     
 
     // Start is called before the first frame update
@@ -68,6 +71,13 @@ public class PlayerMovement : MonoBehaviour
             isDay = !isDay;
             maxJumps = isDay ? dayMaxJumps : nightMaxJumps;
             moveSpeed =  isDay ? dayMoveSpeed : nightMoveSpeed;
+        }
+
+        //Change player animators and sprites based on day or night
+        if(isDay) {
+            animator.runtimeAnimatorController = dayAnimator;
+        } else {
+            animator.runtimeAnimatorController = nightAnimator;
         }
         
     }

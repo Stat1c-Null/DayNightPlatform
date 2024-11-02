@@ -396,6 +396,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 5624813737156659351, guid: 376c5f4a0521b0f4496645c37b2304d7, type: 3}
+      propertyPath: dayAnimator
+      value: 
+      objectReference: {fileID: 9100000, guid: bb387749cf777564596ab2dba5ff4cfb, type: 2}
+    - target: {fileID: 5624813737156659351, guid: 376c5f4a0521b0f4496645c37b2304d7, type: 3}
+      propertyPath: nightAnimator
+      value: 
+      objectReference: {fileID: 9100000, guid: ccc2b7f49fc2f484a9234770b2239b80, type: 2}
+    - target: {fileID: 6379862655031485475, guid: 376c5f4a0521b0f4496645c37b2304d7, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: bb387749cf777564596ab2dba5ff4cfb, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
