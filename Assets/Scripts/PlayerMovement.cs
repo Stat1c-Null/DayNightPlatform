@@ -153,7 +153,6 @@ public class PlayerMovement : MonoBehaviour
     }
 
     private void OnTriggerEnter2D(Collider2D other) {
-        if (other.isTrigger) return;
         isGrounded = true;
         currentJumps = 0;
         animator.SetBool("isJumping", !isGrounded);
