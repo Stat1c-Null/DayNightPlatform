@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 6ed048791c906b547aab80f6e7860492
+guid: d21c77e93ec9b1b4e8550aa5289e36d2
 ScriptedImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -123,16 +123,56 @@ ScriptedImporter:
   animatedSpriteImportData:
   - name: Frame_0
     originalName: 
-    pivot: {x: 0.47826084, y: -0.14705883}
+    pivot: {x: 0.5, y: -0.86666673}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 79
+      width: 78
+      height: 15
+    spriteID: ff84ce130f33f4c43a9b8f311e93ece0
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 79}
+  - name: Frame_1
+    originalName: 
+    pivot: {x: 0.49367085, y: -0.7058824}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 29
+      width: 79
+      height: 17
+    spriteID: 37b8275f1ef74ca4bab294a58ea8dc78
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 29}
+  - name: Frame_2
+    originalName: 
+    pivot: {x: 0.5, y: -0.7058824}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
       x: 4
       y: 4
-      width: 23
-      height: 34
-    spriteID: 8a1ed857279a16c449f7b1855523cd4e
+      width: 80
+      height: 17
+    spriteID: b5c7ffd699cadfc4c832267c13af149a
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -141,18 +181,18 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     uvTransform: {x: 4, y: 4}
-  - name: Frame_1
+  - name: Frame_3
     originalName: 
-    pivot: {x: 0.47826084, y: -0.14705883}
+    pivot: {x: 0.51898736, y: -0.7058824}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 35
-      y: 4
-      width: 23
-      height: 34
-    spriteID: 9f7674d426397264da9f1ebc778619dc
+      x: 4
+      y: 54
+      width: 79
+      height: 17
+    spriteID: 22f7e4f72bf39454b8cbb94237031c32
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -160,12 +200,12 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 35, y: 4}
+    uvTransform: {x: 4, y: 54}
   spriteSheetImportData: []
   asepriteLayers:
   - layerIndex: 0
-    guid: 135884305
-    name: MC-Fall-Night
+    guid: -1685776628
+    name: Platform-3-A-Day
     layerFlags: 0
     layerType: 0
     blendMode: 0
@@ -174,20 +214,38 @@ ScriptedImporter:
       frameIndex: 0
       additiveSortOrder: 0
       cellRect:
-        x: 13
-        y: 5
-        width: 23
-        height: 34
-      spriteId: 8a1ed857279a16c449f7b1855523cd4e
+        x: 9
+        y: 13
+        width: 78
+        height: 15
+      spriteId: ff84ce130f33f4c43a9b8f311e93ece0
     - name: Frame_1
       frameIndex: 1
       additiveSortOrder: 0
       cellRect:
-        x: 13
-        y: 5
-        width: 23
-        height: 34
-      spriteId: 9f7674d426397264da9f1ebc778619dc
+        x: 9
+        y: 12
+        width: 79
+        height: 17
+      spriteId: 37b8275f1ef74ca4bab294a58ea8dc78
+    - name: Frame_2
+      frameIndex: 2
+      additiveSortOrder: 0
+      cellRect:
+        x: 8
+        y: 12
+        width: 80
+        height: 17
+      spriteId: b5c7ffd699cadfc4c832267c13af149a
+    - name: Frame_3
+      frameIndex: 3
+      additiveSortOrder: 0
+      cellRect:
+        x: 7
+        y: 12
+        width: 79
+        height: 17
+      spriteId: 22f7e4f72bf39454b8cbb94237031c32
     linkedCells: []
     parentIndex: -1
   platformSettings:
@@ -206,4 +264,4 @@ ScriptedImporter:
   generatePhysicsShape: 0
   secondarySpriteTextures: []
   spritePackingTag: 
-  canvasSize: {x: 48, y: 48}
+  canvasSize: {x: 96, y: 48}
