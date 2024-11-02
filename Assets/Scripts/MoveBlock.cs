@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class MoveBlock : MonoBehaviour
@@ -13,9 +14,12 @@ public class MoveBlock : MonoBehaviour
 
     int direction = 1;
 
-    // Update is called once per frame
-    void Update()
+    Vector3 oldPosition;
+
+    // this is in fixed because if we dont interpolation will get absolutely rekt
+    void FixedUpdate()
     {
+
         Vector2 target = currentTarget();
 
         platform.position = Vector2.Lerp(platform.position, target, speed * Time.deltaTime);
@@ -26,6 +30,7 @@ public class MoveBlock : MonoBehaviour
         {
             direction *= -1;
         }
+
     }
 
     Vector2 currentTarget()
@@ -40,16 +45,21 @@ public class MoveBlock : MonoBehaviour
         }
     }
 
+    public string[] riderTags = {"Player"};
+
     //this is what I added since last time
     private void OnTriggerEnter2D(Collider2D c)
     {
-        if (c.CompareTag("Player")){
+        if (riderTags.Contains<string>(c.tag))
+        {
             c.transform.SetParent(platform.transform);
         }
     }
+
     private void OnTriggerExit2D(Collider2D c)
     {
-        if (c.CompareTag("Player")){
+        if (riderTags.Contains<string>(c.tag))
+        {
             c.transform.SetParent(null);
         }
     }
