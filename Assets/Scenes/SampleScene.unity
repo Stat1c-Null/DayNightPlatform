@@ -253,10 +253,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2594057039684939129, guid: 376c5f4a0521b0f4496645c37b2304d7, type: 3}
-      propertyPath: m_Material
-      value: 
-      objectReference: {fileID: 6200000, guid: 0d74ee298a331c646bb35de4275f7632, type: 2}
     - target: {fileID: 4244804434789714060, guid: 376c5f4a0521b0f4496645c37b2304d7, type: 3}
       propertyPath: m_LocalPosition.x
       value: -5.66
@@ -301,22 +297,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    - target: {fileID: 4968448132497215477, guid: 376c5f4a0521b0f4496645c37b2304d7, type: 3}
-      propertyPath: m_TagString
-      value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 5641188440484995021, guid: 376c5f4a0521b0f4496645c37b2304d7, type: 3}
-      propertyPath: m_Interpolate
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5641188440484995021, guid: 376c5f4a0521b0f4496645c37b2304d7, type: 3}
-      propertyPath: m_CollisionDetection
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5802747376544424969, guid: 376c5f4a0521b0f4496645c37b2304d7, type: 3}
-      propertyPath: m_Material
-      value: 
-      objectReference: {fileID: 6200000, guid: 0d74ee298a331c646bb35de4275f7632, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -335,7 +315,7 @@ GameObject:
   - component: {fileID: 988546481}
   - component: {fileID: 988546480}
   m_Layer: 0
-  m_Name: Square (1)
+  m_Name: Day Square
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -540,8 +520,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b1e70b6a3a49ca40bebd6d3d99d2a80, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  obj1: {fileID: 1408164601}
-  obj2: {fileID: 988546477}
+  dayObj: {fileID: 988546477}
+  nightObj: {fileID: 1408164601}
 --- !u!4 &1382766984
 Transform:
   m_ObjectHideFlags: 0
@@ -573,7 +553,7 @@ GameObject:
   - component: {fileID: 1408164605}
   - component: {fileID: 1408164604}
   m_Layer: 0
-  m_Name: Square
+  m_Name: Night Square
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -971,7 +951,6 @@ MonoBehaviour:
   start: {fileID: 1092257003}
   end: {fileID: 467284803}
   speed: 1.5
-  riders: []
   riderTags:
   - Player
 --- !u!1 &1819422479
