@@ -33,6 +33,18 @@ public class PlayerMovement : MonoBehaviour
     static public UnityEvent swappedToDay = new UnityEvent();
     static public UnityEvent swappedToNight = new UnityEvent();
 
+
+    static private UnityEvent instanceSwappedToDay = new UnityEvent();
+    static private UnityEvent instanceSwappedToNight = new UnityEvent();
+
+    [Header("Events")]
+    public UnityEvent onMove = new UnityEvent();
+    public UnityEvent onIdle = new UnityEvent();
+    public UnityEvent onGroundJump = new UnityEvent();
+    public UnityEvent onAirJump = new UnityEvent();
+    public UnityEvent onMoonAirJump = new UnityEvent();
+    public UnityEvent onLand = new UnityEvent();
+
     // Start is called before the first frame update
     void Start()
     {
@@ -45,6 +57,7 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        var oldMoveDire = moveDir;
         //Movement direction
         moveDir = Input.GetAxisRaw("Horizontal");
         animator.SetFloat("xVelocity", Math.Abs(rb.velocity.x));
@@ -63,9 +76,17 @@ public class PlayerMovement : MonoBehaviour
         //Jumping
         if((Input.GetButtonDown("Jump") || Input.GetKeyDown(KeyCode.W)) && currentJumps < maxJumps) {
             currentJumps += 1;
-            isGrounded = false;
+            if (isGrounded)
+            {
+                GroundJump();
+                isGrounded = false;
+            }
+            else
+            {
+                AirJump();
+                isGrounded = false;
+            }
             animator.SetBool("isJumping", !isGrounded);
-            Jump();
         }
 
         //Switch between day and night mode movement
@@ -78,18 +99,29 @@ public class PlayerMovement : MonoBehaviour
             //Change player animators and sprites based on day or night
             if (isDay)
             {
-                print("swapped day");
                 swappedToDay.Invoke();
                 animator.runtimeAnimatorController = dayAnimator;
             }
             else
             {
-                print("swapped night");
                 swappedToNight.Invoke();
                 animator.runtimeAnimatorController = nightAnimator;
             }
         }
-        
+
+
+        if (isGrounded)
+        {
+            if (moveDir - oldMoveDire > 0.7f)
+            {
+                onMove.Invoke();
+            }
+            else if (moveDir - oldMoveDire < -0.7f)
+            {
+                onIdle.Invoke();
+            }
+        }
+
     }
 
     private void FixedUpdate() {
@@ -98,10 +130,26 @@ public class PlayerMovement : MonoBehaviour
         rb.velocity = movement;
     }
 
-    private void Jump(){
+    private void GroundJump(){
         Vector2 jump = new Vector2(rb.velocity.x, jumpForce);
         
         rb.velocity = jump;
+        onGroundJump.Invoke();
+    }
+
+    private void AirJump()
+    {
+        Vector2 jump = new Vector2(rb.velocity.x, jumpForce);
+
+        rb.velocity = jump;
+
+        if (currentJumps == nightMaxJumps)
+        {
+            onMoonAirJump.Invoke();
+            print("moon jump");
+            return;
+        }
+        onAirJump.Invoke();
     }
 
     private void OnTriggerEnter2D(Collider2D other) {
@@ -109,5 +157,6 @@ public class PlayerMovement : MonoBehaviour
         isGrounded = true;
         currentJumps = 0;
         animator.SetBool("isJumping", !isGrounded);
+        onLand.Invoke();
     }
 }
