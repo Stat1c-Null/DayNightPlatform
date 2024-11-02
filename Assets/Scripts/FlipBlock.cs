@@ -4,23 +4,25 @@ using UnityEngine;
 
 public class FlipBlock : MonoBehaviour
 {
-    public GameObject obj1;
-    public GameObject obj2;
+    public GameObject dayObj;
+    public GameObject nightObj;
     // Start is called before the first frame update
     void Start()
     {
-        obj1.SetActive(true);
-        obj2.SetActive(false);
+        PlayerMovement.swappedToDay.AddListener(SwapBlockDay);
+        PlayerMovement.swappedToNight.AddListener(SwapBlockNight);
+
+        dayObj.SetActive(PlayerMovement.isDay);
+        nightObj.SetActive(!PlayerMovement.isDay);
     }
-
-    // Update is called once per frame
-    void Update()
+    void SwapBlockDay()
     {
-        if (Input.GetKeyDown(KeyCode.F))
-        {
-            obj1.SetActive(!obj1.activeSelf);
-            obj2.SetActive(!obj2.activeSelf);
-        }
-
+        dayObj.SetActive(true);
+        nightObj.SetActive(false);
+    }
+    void SwapBlockNight()
+    {
+        dayObj.SetActive(false);
+        nightObj.SetActive(true);
     }
 }

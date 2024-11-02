@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using UnityEngine.Events;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -17,7 +18,7 @@ public class PlayerMovement : MonoBehaviour
     [Header("Stats")]
     public int healthAmount;
     public float jumpForce;
-    public bool isDay;
+    static public bool isDay = true;
     float moveDir;
     private Rigidbody2D rb;
     private bool isGrounded;
@@ -28,7 +29,9 @@ public class PlayerMovement : MonoBehaviour
     [Header("Day/Night Animators")]
     public RuntimeAnimatorController nightAnimator;
     public RuntimeAnimatorController dayAnimator;
-    
+
+    static public UnityEvent swappedToDay = new UnityEvent();
+    static public UnityEvent swappedToNight = new UnityEvent();
 
     // Start is called before the first frame update
     void Start()
@@ -37,7 +40,6 @@ public class PlayerMovement : MonoBehaviour
         animator = GetComponent<Animator>();
         maxJumps = dayMaxJumps;
         moveSpeed = dayMoveSpeed;
-        isDay = true;
     }
 
     // Update is called once per frame
@@ -68,16 +70,24 @@ public class PlayerMovement : MonoBehaviour
 
         //Switch between day and night mode movement
         if(Input.GetKeyDown(KeyCode.E)) {
+            print("swapped");
             isDay = !isDay;
             maxJumps = isDay ? dayMaxJumps : nightMaxJumps;
             moveSpeed =  isDay ? dayMoveSpeed : nightMoveSpeed;
-        }
 
-        //Change player animators and sprites based on day or night
-        if(isDay) {
-            animator.runtimeAnimatorController = dayAnimator;
-        } else {
-            animator.runtimeAnimatorController = nightAnimator;
+            //Change player animators and sprites based on day or night
+            if (isDay)
+            {
+                print("swapped day");
+                swappedToDay.Invoke();
+                animator.runtimeAnimatorController = dayAnimator;
+            }
+            else
+            {
+                print("swapped night");
+                swappedToNight.Invoke();
+                animator.runtimeAnimatorController = nightAnimator;
+            }
         }
         
     }
