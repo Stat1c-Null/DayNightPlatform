@@ -6,8 +6,8 @@ public class BarController : MonoBehaviour
 {
     private int heatMax;
     private int sleepMax;
-    private static int heatCount;
-    private static int sleepCount;
+    public static int heatCount;
+    public static int sleepCount;
     private double heatTick;
     private double sleepTick;
     public double heatRate;
@@ -82,7 +82,19 @@ public class BarController : MonoBehaviour
     public static void collectPillow()
     {
         print("pillow collected");
-        sleepCount += pillowVal;
+        if(sleepCount+pillowVal < 30)
+            sleepCount += pillowVal;
+        else
+            sleepCount = 30;
+    }
+
+    public int getHeatCount()
+    {
+        return heatCount;
+    }
+    public int getSleepCount()
+    {
+        return sleepCount;
     }
 
     private void doDamage()
