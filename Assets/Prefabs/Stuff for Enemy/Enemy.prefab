@@ -32,9 +32,7 @@ Transform:
   m_LocalScale: {x: 4, y: 4, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 3828325040731739586}
   - {fileID: 7759804928809257827}
-  - {fileID: 4227174402148358183}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &8748211056772461822
@@ -131,11 +129,11 @@ Transform:
   m_GameObject: {fileID: 5940699739303824319}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.915057, y: 0.3425, z: 1}
+  m_LocalPosition: {x: 0.68376076, y: -1.9166669, z: 0}
+  m_LocalScale: {x: 3.4004352, y: 5.708334, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 8040215647258015039}
+  m_Father: {fileID: 7759804928809257827}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &4880650524292638201
 BoxCollider2D:
@@ -169,7 +167,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.0782814, y: -0.18757626}
+  m_Offset: {x: 0.04994595, y: -0.18757626}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -180,7 +178,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.80841446, y: 0.6248475}
+  m_Size: {x: 0.86508536, y: 0.6248475}
   m_EdgeRadius: 0
 --- !u!1 &6142298620616983567
 GameObject:
@@ -208,11 +206,11 @@ Transform:
   m_GameObject: {fileID: 6142298620616983567}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0.68376076, y: -1.9166669, z: 0}
+  m_LocalScale: {x: 3.7160912, y: 16.666668, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 8040215647258015039}
+  m_Father: {fileID: 7759804928809257827}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &7073606089447919668
 SpriteRenderer:
@@ -276,8 +274,9 @@ GameObject:
   m_Component:
   - component: {fileID: 7759804928809257827}
   - component: {fileID: 7067653675382013150}
+  - component: {fileID: 3179915450116127320}
   m_Layer: 0
-  m_Name: point
+  m_Name: DEATH SPOT
   m_TagString: Weak Point
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -295,7 +294,9 @@ Transform:
   m_LocalPosition: {x: -0.184, y: 0.115, z: 0}
   m_LocalScale: {x: 0.26909998, y: 0.06, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 3828325040731739586}
+  - {fileID: 4227174402148358183}
   m_Father: {fileID: 8040215647258015039}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &7067653675382013150
@@ -343,3 +344,15 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 0.57594776}
   m_EdgeRadius: 0
+--- !u!114 &3179915450116127320
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6667476660069427512}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2ac23a6a9b27fc34a8ec1cc0fd235869, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

@@ -5,20 +5,18 @@ using UnityEngine;
 public class EnemyDeath : MonoBehaviour
 {
 
-    public GameObject Enemy;
-
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.CompareTag("Weak Point"))
+        if (other.gameObject.CompareTag("FeetOfPain"))
         {
-            Destroy(other.gameObject);
+            Destroy(this.gameObject);
         }
     }
-   /* private void OnCollisionEnter2D(Collision2D col)
-    {
-        if (col.gameObject.tag == "Weak Point")
-        { 
-            Destroy(col.gameObject);
-        }
-    }*/
+    /* private void OnCollisionEnter2D(Collision2D col)
+     {
+         if (col.gameObject.tag == "Weak Point")
+         { 
+             Destroy(col.gameObject);
+         }
+     }*/
 }
