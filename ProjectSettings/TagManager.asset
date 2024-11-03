@@ -8,6 +8,7 @@ TagManager:
   - EBoby
   - Enemy
   - FeetOfPain
+  - EBody
   layers:
   - Default
   - TransparentFX

@@ -115,7 +115,7 @@ GameObject:
   - component: {fileID: 4880650524292638201}
   m_Layer: 0
   m_Name: Dont Touch
-  m_TagString: EBoby
+  m_TagString: EBody
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
