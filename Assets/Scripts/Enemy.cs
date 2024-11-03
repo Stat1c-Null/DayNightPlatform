@@ -20,6 +20,7 @@ public class Enemy : MonoBehaviour
 
     public LayerMask playerLayer; // Layer mask for the player
 
+    public bool IsHit = false;
 
 
     Transform player; // Reference to the player object
@@ -30,7 +31,7 @@ public class Enemy : MonoBehaviour
         mybody = GetComponent<Rigidbody2D>();
         currentPoint = PointA.transform;
         isMoving = true;
-        anim.Play("Walking");
+        anim.Play("Walking", 0);
         
         player = GameObject.FindGameObjectWithTag("Player").transform;
 
@@ -121,10 +122,10 @@ public class Enemy : MonoBehaviour
 
     IEnumerator IdleAtPoint()
     {
-        anim.Play("Idle");
+        anim.Play("Idle", 0);
         isMoving = false;
         yield return new WaitForSeconds(idleTimeAtPoint);
-        anim.Play("Walk");
+        anim.Play("Walk", 0);
         isMoving = true;
     }
 
