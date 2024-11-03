@@ -50,7 +50,6 @@ public class EnemyRockMan : Enemy
     public float DistanceToExplode;
     void CheckPlayerClose()
     {
-        print(Vector3.Distance(transform.position, player.transform.position));
         if (Vector3.Distance(transform.position, player.transform.position) <= DistanceToExplode)
         {
             Attack();
