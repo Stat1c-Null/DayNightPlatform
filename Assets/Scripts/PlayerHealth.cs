@@ -9,16 +9,10 @@ public class PlayerHealth : MonoBehaviour
     public int MaxHealth = 20;
     public int damageGiven = 5;
     Transform Enemy;
+    bool canTakeDamage; //Used for invincibility
+    public float InvincibilityDuration = 1f;
 
-    /*   bool canTakeDamage; //Used for invincibility
-
-       public float InvincibilityDuration = 1f;*/
-
-    /*ublic float invincibilityDuration = 1f; // Adjust as needed
-
-    private bool isInvincible = false;
-
-    private float invincibilityTimer;*/
+    
 
 
     // Start is called before the first frame update
@@ -26,7 +20,7 @@ public class PlayerHealth : MonoBehaviour
     {
         CurrentHealth = MaxHealth;
   
-        Enemy = GameObject.FindGameObjectWithTag("EBody").transform;
+        canTakeDamage = true;
 
 
     }
@@ -36,26 +30,9 @@ public class PlayerHealth : MonoBehaviour
     {
         
         HeartDelete(CurrentHealth);
-        // TakeDamage(damageGiven);
+      
 
 
-        /*if (isInvincible)
-
-        {
-
-            invincibilityTimer -= Time.deltaTime;
-
-            // Visual effect here, e.g., flash the sprite
-
-            if (invincibilityTimer <= 0)
-
-            {
-
-                isInvincible = false;
-
-            }
-
-        }*/
     }
     void HeartDelete(int h)
     {
@@ -82,31 +59,21 @@ public class PlayerHealth : MonoBehaviour
 
 
     }
-    /* public void TakeDamage(int h)
-     {
-         if (canTakeDamage) //Checks if the player can take damage—otherwise, this method does nothing
-         {
-             canTakeDamage = false; //Makes the player invincible
-             CurrentHealth -= h; ; //Deals the appropriate amount of damage to the player
-             StartCoroutine(DamageCooldown()); //Begins the invincibility window
-         }
-     }
-
-     IEnumerator DamageCooldown()
-     {
-         yield return new WaitForSeconds(InvincibilityDuration); //Controls how long the invincibility lasts
-         canTakeDamage = true; //Makes the player no longer invincible
-     }*/
-
-   
-    private void OnCollisionEnter2D(Collision2D other)
+    public void TakeDamage(int h)
     {
-        if (other.gameObject.tag == ("EBody"))
+        if (canTakeDamage) //Checks if the player can take damage—otherwise, this method does nothing
         {
-            CurrentHealth -= 5;
-           /* isInvincible = true;
-
-             invincibilityTimer = invincibilityDuration;*/
+            Debug.Log("Test 2");
+            CurrentHealth -= h;
+            canTakeDamage = false; //Makes the player invincible
+             //Deals the appropriate amount of damage to the player
+          StartCoroutine(DamageCooldown()); //Begins the invincibility window
         }
     }
+    IEnumerator DamageCooldown()
+    {
+        yield return new WaitForSeconds(InvincibilityDuration); //Controls how long the invincibility lasts
+        canTakeDamage = true; //Makes the player no longer invincible
+    }
+   
 }
