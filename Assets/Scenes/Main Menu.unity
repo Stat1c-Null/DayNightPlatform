@@ -265,6 +265,7 @@ GameObject:
   - component: {fileID: 420300001}
   - component: {fileID: 420300000}
   - component: {fileID: 420299999}
+  - component: {fileID: 420300002}
   m_Layer: 5
   m_Name: Quit Button
   m_TagString: Untagged
@@ -373,6 +374,39 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 420299997}
   m_CullTransparentMesh: 1
+--- !u!114 &420300002
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 420299997}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 107adca17222d50488bf22afb398be81, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  buttonSizePressed: 1.2
+  scaleDownSpeed: 0.01
+  scaleUpSpeed: 0.05
+  StartPress:
+    m_PersistentCalls:
+      m_Calls: []
+  pressFinished:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 420300002}
+        m_TargetAssemblyTypeName: GameButton, Assembly-CSharp
+        m_MethodName: QuitGame
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &428215525
 GameObject:
   m_ObjectHideFlags: 0
@@ -846,6 +880,7 @@ GameObject:
   - component: {fileID: 2061116720}
   - component: {fileID: 2061116719}
   - component: {fileID: 2061116718}
+  - component: {fileID: 2061116721}
   m_Layer: 5
   m_Name: Play Button
   m_TagString: Untagged
@@ -954,6 +989,39 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2061116716}
   m_CullTransparentMesh: 1
+--- !u!114 &2061116721
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2061116716}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 107adca17222d50488bf22afb398be81, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  buttonSizePressed: 1.2
+  scaleDownSpeed: 0.01
+  scaleUpSpeed: 0.05
+  StartPress:
+    m_PersistentCalls:
+      m_Calls: []
+  pressFinished:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2061116721}
+        m_TargetAssemblyTypeName: GameButton, Assembly-CSharp
+        m_MethodName: LoadMainLevel
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &2127866816
 GameObject:
   m_ObjectHideFlags: 0
