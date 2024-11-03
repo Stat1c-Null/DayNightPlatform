@@ -15,7 +15,7 @@ public class Enemy : MonoBehaviour
     public float speed = 4;
 
     public bool IsEnemyHit = false;
-    bool isMoving = false;
+    protected bool isMoving = false;
     public float HowFar; // Distance the enemy can see
 
     public LayerMask playerLayer; // Layer mask for the player
@@ -23,7 +23,7 @@ public class Enemy : MonoBehaviour
     public bool IsHit = false;
 
 
-    Transform player; // Reference to the player object
+    protected PlayerMovement player; // Reference to the player object
 
 
     void Start()
@@ -31,9 +31,9 @@ public class Enemy : MonoBehaviour
         mybody = GetComponent<Rigidbody2D>();
         currentPoint = PointA.transform;
         isMoving = true;
-        anim.Play("Walking", 0);
+        anim.Play("Walk", 0);
         
-        player = GameObject.FindGameObjectWithTag("Player").transform;
+        player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>();
 
 
 
@@ -43,28 +43,6 @@ public class Enemy : MonoBehaviour
     {
         MoveToPoint();
 
-       /* // Create a ray from the enemy's position towards the player
-
-        Vector3 rayOrigin = transform.position;
-
-        Vector3 direction = (player.position - rayOrigin).normalized;
-
-
-
-        // Perform the raycast
-
-        RaycastHit hit;
-
-        if (Physics.Raycast(rayOrigin, direction, out hit, HowFar, playerLayer))
-
-        {
-
-            // If ray hits the player, do something (e.g., chase the player)
-            IsEnemyHit = true;
-            death();
-
-        }
-*/
         
     }
 
@@ -73,6 +51,9 @@ public class Enemy : MonoBehaviour
         if (!isMoving) return;
 
         Vector2 point = currentPoint.position - transform.position;
+
+        if (point.x > 0.02 && transform.localScale.x < 0) flip();
+        else if (point.x < 0.02 && transform.localScale.x > 0) flip();
 
         if (currentPoint == PointB.transform)
         {
@@ -91,8 +72,6 @@ public class Enemy : MonoBehaviour
 
         if (Vector2.Distance(transform.position, currentPoint.position) < 0.5f && currentPoint == PointB.transform)
         {
-            flip();
-
             currentPoint = PointA.transform;
             StartCoroutine(IdleAtPoint());
 
@@ -100,10 +79,35 @@ public class Enemy : MonoBehaviour
 
         if (Vector2.Distance(transform.position, currentPoint.position) < 0.5f && currentPoint == PointA.transform)
         {
-            flip();
             currentPoint = PointB.transform;
             StartCoroutine(IdleAtPoint());
         }
+    }
+
+    void MoveToPlayer()
+    {
+
+        // Create a ray from the enemy's position towards the player
+
+         Vector3 rayOrigin = transform.position;
+
+         Vector3 direction = (player.transform.position - rayOrigin).normalized;
+
+
+
+         // Perform the raycast
+
+         RaycastHit hit;
+
+         if (Physics.Raycast(rayOrigin, direction, out hit, HowFar, playerLayer))
+
+         {
+
+             // If ray hits the player, do something (e.g., chase the player)
+             IsEnemyHit = true;
+             //death();
+
+         }
     }
 
     private void flip()
@@ -118,15 +122,24 @@ public class Enemy : MonoBehaviour
 
     }
 
-    float idleTimeAtPoint = 1;
+    public float idleTimeAtPoint = 1;
 
     IEnumerator IdleAtPoint()
     {
-        anim.Play("Idle", 0);
+        mybody.velocity = new Vector2(0, mybody.velocity.y);
+        anim.Play("Idle");
         isMoving = false;
         yield return new WaitForSeconds(idleTimeAtPoint);
-        anim.Play("Walk", 0);
+        anim.Play("Walk");
         isMoving = true;
+    }
+
+
+
+    public void Death()
+    {
+
+        Destroy(this.gameObject);
     }
 
     /* private void death()

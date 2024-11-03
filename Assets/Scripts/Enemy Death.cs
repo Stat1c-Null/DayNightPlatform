@@ -17,7 +17,7 @@ public class EnemyDeath : MonoBehaviour
         {
             enemy.IsHit = true;
             StartCoroutine(WaitForAnimationUpdate());
-            Destroy(this.gameObject);
+            enemy.Death();
         }
     }
 
@@ -40,16 +40,6 @@ public class EnemyDeath : MonoBehaviour
        /* // Access the updated animation state after the frame is complete
 
         Debug.Log("Animation is now in state: " + animator.GetCurrentAnimatorStateInfo(0).fullPathHash);*/
-
-    }
-
-    public void Damage()
-    {
-
-    }
-
-    public void Attack()
-    {
 
     }
 
