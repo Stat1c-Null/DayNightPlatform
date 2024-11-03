@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Weak Point
   - EBoby
+  - Enemy
+  - FeetOfPain
   layers:
   - Default
   - TransparentFX

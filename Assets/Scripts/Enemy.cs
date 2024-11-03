@@ -73,7 +73,7 @@ public class Enemy : MonoBehaviour
 
         }
 
-        // Create a ray from the enemy's position towards the player
+       /* // Create a ray from the enemy's position towards the player
 
         Vector3 rayOrigin = transform.position;
 
@@ -94,7 +94,7 @@ public class Enemy : MonoBehaviour
             death();
 
         }
-
+*/
         
     }
     private void flip()
@@ -108,7 +108,7 @@ public class Enemy : MonoBehaviour
 
 
     }
-    private void death()
+   /* private void death()
     {
         if (IsEnemyHit)
         {
@@ -117,5 +117,13 @@ public class Enemy : MonoBehaviour
 
 
 
+    }*/
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.CompareTag("FeetOfPain"))
+        {
+            Destroy(this.gameObject);
+        }
     }
 }

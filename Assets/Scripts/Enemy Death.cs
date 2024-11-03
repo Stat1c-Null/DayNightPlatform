@@ -4,11 +4,21 @@ using UnityEngine;
 
 public class EnemyDeath : MonoBehaviour
 {
-    private void OnCollisionEnter2D(Collision2D col)
+
+    public GameObject Enemy;
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.CompareTag("Weak Point"))
+        {
+            Destroy(other.gameObject);
+        }
+    }
+   /* private void OnCollisionEnter2D(Collision2D col)
     {
         if (col.gameObject.tag == "Weak Point")
         { 
             Destroy(col.gameObject);
         }
-    }
+    }*/
 }

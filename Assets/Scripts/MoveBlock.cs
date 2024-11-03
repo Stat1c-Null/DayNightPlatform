@@ -47,15 +47,12 @@ public class MoveBlock : MonoBehaviour
 
     public string[] riderTags = {"Player"};
 
-    public List<Transform> riders;
-
     //this is what I added since last time
     private void OnTriggerEnter2D(Collider2D c)
     {
         if (riderTags.Contains<string>(c.tag))
         {
             c.transform.SetParent(platform.transform);
-            riders.Add(c.transform);
         }
     }
 
@@ -64,16 +61,6 @@ public class MoveBlock : MonoBehaviour
         if (riderTags.Contains<string>(c.tag))
         {
             c.transform.SetParent(null);
-            riders.Remove(c.transform);
         }
-    }
-
-    public void DeparentAllRiders()
-    {
-        foreach (Transform t in riders)
-        {
-            t.transform.SetParent(null);
-        }
-        riders.Clear();
     }
 }
