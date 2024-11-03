@@ -9,13 +9,13 @@ public class Enemy : MonoBehaviour
     public GameObject PointA;
     public GameObject PointB;
     //public GameObject PointC;
-    Animator anim;
+    public Animator anim;
     Transform currentPoint;
 
     public float speed = 4;
 
     public bool IsEnemyHit = false;
-
+    bool isMoving = false;
     public float HowFar; // Distance the enemy can see
 
     public LayerMask playerLayer; // Layer mask for the player
@@ -28,50 +28,19 @@ public class Enemy : MonoBehaviour
     void Start()
     {
         mybody = GetComponent<Rigidbody2D>();
-        anim = GetComponent<Animator>();
         currentPoint = PointA.transform;
-
-        anim.SetBool("IsRunning", true);
-
+        isMoving = true;
+        anim.Play("Walking");
+        
         player = GameObject.FindGameObjectWithTag("Player").transform;
 
 
 
     }
 
-    void Update()
+    protected void Update()
     {
-        Vector2 point = currentPoint.position - transform.position;
-
-        if (currentPoint == PointB.transform)
-        {
-            mybody.velocity = new Vector2(speed, 0);
-
-
-        }
-        else
-        {
-
-            mybody.velocity = new Vector2(-speed, 0);
-
-
-        }
-
-
-        if (Vector2.Distance(transform.position, currentPoint.position) < 0.5f && currentPoint == PointB.transform)
-        {
-            flip();
-
-            currentPoint = PointA.transform;
-
-        }
-
-        if (Vector2.Distance(transform.position, currentPoint.position) < 0.5f && currentPoint == PointA.transform)
-        {
-            flip();
-            currentPoint = PointB.transform;
-
-        }
+        MoveToPoint();
 
        /* // Create a ray from the enemy's position towards the player
 
@@ -97,6 +66,45 @@ public class Enemy : MonoBehaviour
 */
         
     }
+
+    void MoveToPoint()
+    {
+        if (!isMoving) return;
+
+        Vector2 point = currentPoint.position - transform.position;
+
+        if (currentPoint == PointB.transform)
+        {
+            mybody.velocity = new Vector2(speed, 0);
+
+
+        }
+        else
+        {
+
+            mybody.velocity = new Vector2(-speed, 0);
+
+
+        }
+
+
+        if (Vector2.Distance(transform.position, currentPoint.position) < 0.5f && currentPoint == PointB.transform)
+        {
+            flip();
+
+            currentPoint = PointA.transform;
+            StartCoroutine(IdleAtPoint());
+
+        }
+
+        if (Vector2.Distance(transform.position, currentPoint.position) < 0.5f && currentPoint == PointA.transform)
+        {
+            flip();
+            currentPoint = PointB.transform;
+            StartCoroutine(IdleAtPoint());
+        }
+    }
+
     private void flip()
     {
         Vector3 localScale = transform.localScale;
@@ -108,16 +116,28 @@ public class Enemy : MonoBehaviour
 
 
     }
-   /* private void death()
+
+    float idleTimeAtPoint = 1;
+
+    IEnumerator IdleAtPoint()
     {
-        if (IsEnemyHit)
-        {
-            Destroy(this.gameObject);
-        }
+        anim.Play("Idle");
+        isMoving = false;
+        yield return new WaitForSeconds(idleTimeAtPoint);
+        anim.Play("Walk");
+        isMoving = true;
+    }
+
+    /* private void death()
+     {
+         if (IsEnemyHit)
+         {
+             Destroy(this.gameObject);
+         }
 
 
 
-    }*/
+     }*/
 
-    
+
 }

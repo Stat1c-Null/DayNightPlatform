@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyRockMan : MonoBehaviour
+public class EnemyRockMan : Enemy
 {
    /* public Transform[] PartrollingPoints;
     public float TargetP;*/
@@ -34,16 +34,14 @@ public class EnemyRockMan : MonoBehaviour
         anim = GetComponent<Animator>();
        currentPoint = PointA.transform;
 
-          IsHit = false;
-       
-
-    player = GameObject.FindGameObjectWithTag("Player").transform;
+        IsHit = false;
+        player = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
     // Update is called once per frame
     void Update()
     {
-
+        base.Update();
 
         /*if(transform.position == PartrollingPoints[TargetP].position)
         {
@@ -53,46 +51,6 @@ public class EnemyRockMan : MonoBehaviour
         }
           transform.position = Vector3.MoveTowards(transform.position, PartrollingPoints[0].position, speed * Time.deltaTime);
 */
-
-
-        Vector2 point = currentPoint.position - transform.position;
-
-        if (currentPoint == PointB.transform)
-        {
-            mybody.velocity = new Vector2(speed, 0);
-
-
-        }
-        else
-        {
-
-            mybody.velocity = new Vector2(-speed, 0);
-
-
-        }
-
-
-        if (Vector2.Distance(transform.position, currentPoint.position) < 0.5f && currentPoint == PointB.transform)
-        {
-            flip();
-
-            currentPoint = PointA.transform;
-            Debug.Log("Where");
-
-        }
-
-        if (Vector2.Distance(transform.position, currentPoint.position) < 0.5f && currentPoint == PointA.transform)
-        {
-            flip();
-            currentPoint = PointB.transform;
-            Debug.Log("WhereAgain");
-
-        }
-
-
-
-
-
 
         //aniamtions
         if (!IsHit)
@@ -128,15 +86,4 @@ public class EnemyRockMan : MonoBehaviour
     
     
     }*/
-    private void flip()
-    {
-        Vector3 localScale = transform.localScale;
-        localScale.x *= -1;
-        transform.localScale = localScale;
-
-
-
-
-
-    }
 }
