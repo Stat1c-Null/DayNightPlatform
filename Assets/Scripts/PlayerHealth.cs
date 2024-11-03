@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerHealth : MonoBehaviour
 {
@@ -12,7 +13,31 @@ public class PlayerHealth : MonoBehaviour
     bool canTakeDamage; //Used for invincibility
     public float InvincibilityDuration = 1f;
 
-    
+    public LayerMask UI;
+    public Canvas PlayerHeart;
+
+    public GameObject DAYA;
+    public GameObject DAH1;
+    public GameObject DAH2;
+    public GameObject DAH3;
+
+    public GameObject DAYDA;
+    public GameObject DDAH1;
+    public GameObject DDAH2;
+    public GameObject DDAH3;
+
+    public GameObject NIGHTA;
+    public GameObject NAH1;
+    public GameObject NAH2;
+    public GameObject NAH3;
+
+    public GameObject NIGHTDA;
+    public GameObject NDAH1;
+    public GameObject NDAH2;
+    public GameObject NDAH3;
+
+    private bool swapped = false;
+
 
 
     // Start is called before the first frame update
@@ -21,8 +46,16 @@ public class PlayerHealth : MonoBehaviour
         CurrentHealth = MaxHealth;
   
         canTakeDamage = true;
+         
 
+  
+        DAYA.SetActive(true);
+        DAYDA.SetActive(true);
+        NIGHTA.SetActive(false);
+        NIGHTDA.SetActive(false);
 
+        PlayerMovement.swappedToDay.AddListener(st);
+        PlayerMovement.swappedToNight.AddListener(sf);
     }
 
     // Update is called once per frame
@@ -30,8 +63,8 @@ public class PlayerHealth : MonoBehaviour
     {
         
         HeartDelete(CurrentHealth);
-      
 
+        
 
     }
     void HeartDelete(int h)
@@ -39,25 +72,51 @@ public class PlayerHealth : MonoBehaviour
         switch (h)
         {
             case 15:
-                Debug.Log("3 hearts");
+                    NAH1.SetActive(false);
+                    DAH1.SetActive(false);
+              
+                
                 //first heart is deacitived
                 break;
             case 10:
-                Debug.Log("2 hearts");
+                    NAH2.SetActive(false);
+                    DAH2.SetActive(false);
                 //second heart is deactivied
                 break;
             case 5:
-                Debug.Log("1 hearts");
+                    NAH3.SetActive(false);
+                    DAH3.SetActive(false);
                 //third and final is deactivated
                 break;
             case 0:
-                Debug.Log("0 hearts");
+                Debug.Log("EQUI DEAD DEAD");
                 //last hit and they are out send them to game over scene/screen
                 break;
 
         }
 
 
+    }
+
+
+   
+
+    void sf()
+    {
+        NIGHTA.SetActive(true);
+        NIGHTDA.SetActive(true);
+        DAYDA.SetActive(false);
+        DAYA.SetActive(false);
+
+    
+    
+    }
+    void st()
+    {
+        NIGHTA.SetActive(false);
+        NIGHTDA.SetActive(false);
+        DAYDA.SetActive(true);
+        DAYA.SetActive(true);
     }
     public void TakeDamage(int h)
     {
