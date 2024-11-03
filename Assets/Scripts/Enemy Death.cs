@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class EnemyDeath : MonoBehaviour
 {
-    public EnemyRockMan rock;
-  Animator anim;
+    public Enemy enemy;
+    Animator anim;
     private void Start()
     {
         anim = GetComponent<Animator>();
@@ -15,7 +15,7 @@ public class EnemyDeath : MonoBehaviour
     {
         if (other.gameObject.CompareTag("FeetOfPain"))
         {
-            rock.IsHit = true;
+            enemy.IsHit = true;
             StartCoroutine(WaitForAnimationUpdate());
             Destroy(this.gameObject);
         }

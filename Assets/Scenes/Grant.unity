@@ -147,7 +147,7 @@ Transform:
   m_GameObject: {fileID: 71257568}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 3.57, z: 0}
+  m_LocalPosition: {x: 2.5, y: 0.069999695, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -178,7 +178,7 @@ Transform:
   m_GameObject: {fileID: 76385007}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -1.03, z: 0}
+  m_LocalPosition: {x: -2.7499998, y: -0.029999971, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -335,7 +335,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ac23a6a9b27fc34a8ec1cc0fd235869, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rock: {fileID: 0}
+  enemy: {fileID: 409357396}
 --- !u!114 &409357396
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -350,12 +350,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PointA: {fileID: 76385007}
   PointB: {fileID: 71257568}
+  anim: {fileID: 1083886963}
   speed: 4
   IsEnemyHit: 0
   HowFar: 0
   playerLayer:
     serializedVersion: 2
     m_Bits: 256
+  IsHit: 0
 --- !u!1001 &512775119
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -472,11 +474,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1548536849592682971, guid: 66cdf71bc0b96af4498c99d8ed231888, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -99
+      value: -99.000015
       objectReference: {fileID: 0}
     - target: {fileID: 6974853945523710842, guid: 66cdf71bc0b96af4498c99d8ed231888, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -99
+      value: -99.000015
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1384,7 +1386,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ac23a6a9b27fc34a8ec1cc0fd235869, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rock: {fileID: 0}
+  enemy: {fileID: 1695596855}
 --- !u!114 &1695596855
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1399,12 +1401,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PointA: {fileID: 153020579}
   PointB: {fileID: 2061374186}
+  anim: {fileID: 0}
   speed: 4
   IsEnemyHit: 0
   HowFar: 0
   playerLayer:
     serializedVersion: 2
     m_Bits: 256
+  IsHit: 0
 --- !u!50 &1695596856
 Rigidbody2D:
   serializedVersion: 4

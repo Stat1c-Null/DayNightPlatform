@@ -6,37 +6,7 @@ public class EnemyRockMan : Enemy
 {
    /* public Transform[] PartrollingPoints;
     public float TargetP;*/
-
-
-    Rigidbody2D mybody;
-    public GameObject PointA;
-    public GameObject PointB;
-    //public GameObject PointC;
-    Animator anim;
-    Transform currentPoint;
-
-    public float speed = 4;
-
-    public bool IsHit = false;
-
-    public RuntimeAnimatorController IdleAnimator;
-    public RuntimeAnimatorController WalkAnimator;
-    public RuntimeAnimatorController DeathAnimator;
-
-
-
-
-    Transform player; // Reference to the player object
-    // Start is called before the first frame update
-    void Start()
-    {
-        mybody = GetComponent<Rigidbody2D>();
-        anim = GetComponent<Animator>();
-       currentPoint = PointA.transform;
-
-        IsHit = false;
-        player = GameObject.FindGameObjectWithTag("Player").transform;
-    }
+   
 
     // Update is called once per frame
     void Update()
