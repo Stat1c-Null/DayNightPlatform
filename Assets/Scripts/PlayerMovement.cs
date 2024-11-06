@@ -30,9 +30,11 @@ public class PlayerMovement : MonoBehaviour
     public RuntimeAnimatorController nightAnimator;
     public RuntimeAnimatorController dayAnimator;
 
+    [Header("Day/Night Swap")]
+    public float swapCooldown = 1;
     static public UnityEvent swappedToDay = new UnityEvent();
     static public UnityEvent swappedToNight = new UnityEvent();
-
+    bool canSwap = true;
 
     static private UnityEvent instanceSwappedToDay = new UnityEvent();
     static private UnityEvent instanceSwappedToNight = new UnityEvent();
@@ -53,6 +55,12 @@ public class PlayerMovement : MonoBehaviour
         moveSpeed = dayMoveSpeed;
     }
 
+    IEnumerator SwapCooldown()
+    {
+        canSwap = false;
+        yield return new WaitForSeconds(swapCooldown);
+        canSwap = true;
+    }
     // Update is called once per frame
     void Update()
     {
@@ -89,11 +97,12 @@ public class PlayerMovement : MonoBehaviour
         }
 
         //Switch between day and night mode movement
-        if(Input.GetKeyDown(KeyCode.E)) {
+        if(Input.GetKeyDown(KeyCode.E) && canSwap) {
             print("swapped");
             isDay = !isDay;
             maxJumps = isDay ? dayMaxJumps : nightMaxJumps;
             moveSpeed =  isDay ? dayMoveSpeed : nightMoveSpeed;
+            StartCoroutine(SwapCooldown());
 
             //Change player animators and sprites based on day or night
             if (isDay)

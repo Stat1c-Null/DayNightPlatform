@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prefab: {fileID: 9171458557467752980, guid: 9bfb62caa48bcc949adf260fd9739aa0, type: 3}
-  isWorldSpace: 1
+  isWorldSpace: 0
 --- !u!1 &6781777842560247990
 GameObject:
   m_ObjectHideFlags: 0
@@ -105,7 +105,7 @@ BoxCollider2D:
   m_GameObject: {fileID: 6781777842560247990}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 0d74ee298a331c646bb35de4275f7632, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -185,11 +185,12 @@ MonoBehaviour:
   anim: {fileID: 4809783852419759928}
   speed: 4
   IsEnemyHit: 0
-  HowFar: 0
+  HowFar: 1
   playerLayer:
     serializedVersion: 2
     m_Bits: 256
   IsHit: 0
+  collider: {fileID: 4870574009929627738}
   idleTimeAtPoint: 1
   DistanceToExplode: 4.5
   TimeToExplode: 2.4
@@ -208,7 +209,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  explosionDamage: 2
+  explosionDamage: 5
 --- !u!1 &7860798799129374524
 GameObject:
   m_ObjectHideFlags: 0

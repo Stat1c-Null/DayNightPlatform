@@ -28,6 +28,8 @@ public class BarController : MonoBehaviour
         sleepTick = 0;
         heatUpTick = 0;
         pillowVal = pillowAmt;
+
+        PlayerHealth.deathStatic.AddListener(Respawn);
     }
 
     // Update is called once per frame
@@ -100,5 +102,22 @@ public class BarController : MonoBehaviour
     private void doDamage()
     {
         //to be implemented
+    }
+
+
+
+
+
+    public void Respawn()
+    {
+
+        heatMax = 30;
+        sleepMax = 30;
+        heatCount = heatMax;
+        sleepCount = sleepMax;
+        heatTick = 0;
+        sleepTick = 0;
+        heatUpTick = 0;
+        pillowVal = pillowAmt;
     }
 }

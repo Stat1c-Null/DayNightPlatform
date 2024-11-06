@@ -1,10 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 
 public class PlayerHealth : MonoBehaviour
 {
+    public UnityEvent hurt;
+    public UnityEvent death;
+    public static UnityEvent deathStatic;
 
     public int CurrentHealth;
     public int MaxHealth = 20;
@@ -59,37 +63,33 @@ public class PlayerHealth : MonoBehaviour
         PlayerMovement.swappedToNight.AddListener(sf);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-        HeartDelete(CurrentHealth);
-
-        
-
-    }
     void HeartDelete(int h)
     {
         switch (h)
         {
             case 15:
-                    NAH1.SetActive(false);
+                hurt.Invoke();
+                NAH1.SetActive(false);
                     DAH1.SetActive(false);
               
                 
                 //first heart is deacitived
                 break;
             case 10:
-                    NAH2.SetActive(false);
+                hurt.Invoke();
+                NAH2.SetActive(false);
                     DAH2.SetActive(false);
                 //second heart is deactivied
                 break;
             case 5:
-                    NAH3.SetActive(false);
+                hurt.Invoke();
+                NAH3.SetActive(false);
                     DAH3.SetActive(false);
                 //third and final is deactivated
                 break;
             case 0:
+                death.Invoke();
+                deathStatic.Invoke();
                 Debug.Log("EQUI DEAD DEAD");
                 deathTrigger.GetComponent<DeathTrigger>().die();
                 //last hit and they are out send them to game over scene/screen
@@ -127,8 +127,9 @@ public class PlayerHealth : MonoBehaviour
             Debug.Log("Test 2");
             CurrentHealth -= h;
             canTakeDamage = false; //Makes the player invincible
+            HeartDelete(CurrentHealth);
              //Deals the appropriate amount of damage to the player
-          StartCoroutine(DamageCooldown()); //Begins the invincibility window
+             StartCoroutine(DamageCooldown()); //Begins the invincibility window
         }
     }
     IEnumerator DamageCooldown()

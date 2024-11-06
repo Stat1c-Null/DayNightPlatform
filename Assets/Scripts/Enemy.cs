@@ -22,6 +22,7 @@ public class Enemy : MonoBehaviour
 
     public bool IsHit = false;
 
+    public Collider2D collider;
 
     protected PlayerMovement player; // Reference to the player object
 
@@ -138,7 +139,6 @@ public class Enemy : MonoBehaviour
 
     public void Death()
     {
-
         Destroy(this.gameObject);
     }
 

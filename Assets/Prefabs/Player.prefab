@@ -57,9 +57,9 @@ GameObject:
   - component: {fileID: 1980037660711406591}
   - component: {fileID: 517394609307722717}
   - component: {fileID: 6139867578078092296}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Visuals
-  m_TagString: Player
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -229,7 +229,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.0032266527, y: 0.24651957}
+  m_Offset: {x: -0.0014066696, y: 0.6805432}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.4736842, y: -0.13157894}
@@ -240,7 +240,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.20300052, y: 0.37789214}
+  m_Size: {x: 0.366724, y: 1.0049868}
   m_EdgeRadius: 0
 --- !u!50 &5641188440484995021
 Rigidbody2D:
@@ -287,6 +287,7 @@ MonoBehaviour:
   nightMaxJumps: 3
   healthAmount: 3
   jumpForce: 5
+  animator: {fileID: 6139867578078092296}
   nightAnimator: {fileID: 9100000, guid: ccc2b7f49fc2f484a9234770b2239b80, type: 2}
   dayAnimator: {fileID: 9100000, guid: bb387749cf777564596ab2dba5ff4cfb, type: 2}
   onMove:
@@ -411,8 +412,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.0041489904, y: 0.08175269}
-  m_Size: {x: 0.21003208, y: 0.046702698}
+  m_Offset: {x: 0.013416854, y: 0.21613017}
+  m_Size: {x: 0.25945863, y: 0.07450462}
   m_Direction: 1
 --- !u!114 &10410026334340246
 MonoBehaviour:
