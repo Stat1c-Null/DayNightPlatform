@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    Rigidbody2D mybody;
+    protected Rigidbody2D mybody;
     public GameObject PointA;
     public GameObject PointB;
     //public GameObject PointC;

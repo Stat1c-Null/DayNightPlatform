@@ -36,6 +36,7 @@ public class PlayerHealth : MonoBehaviour
     public GameObject NDAH2;
     public GameObject NDAH3;
 
+    public GameObject deathTrigger;
     private bool swapped = false;
 
 
@@ -90,6 +91,7 @@ public class PlayerHealth : MonoBehaviour
                 break;
             case 0:
                 Debug.Log("EQUI DEAD DEAD");
+                deathTrigger.GetComponent<DeathTrigger>().die();
                 //last hit and they are out send them to game over scene/screen
                 break;
 
@@ -120,7 +122,7 @@ public class PlayerHealth : MonoBehaviour
     }
     public void TakeDamage(int h)
     {
-        if (canTakeDamage) //Checks if the player can take damage—otherwise, this method does nothing
+        if (canTakeDamage) //Checks if the player can take damageï¿½otherwise, this method does nothing
         {
             Debug.Log("Test 2");
             CurrentHealth -= h;

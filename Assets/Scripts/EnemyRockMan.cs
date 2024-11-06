@@ -75,6 +75,7 @@ public class EnemyRockMan : Enemy
     bool exploded;
     IEnumerator ExplosionAnimation()
     {
+        mybody.constraints = RigidbodyConstraints2D.FreezeAll;
         exploded = true;
         isMoving = false;
         // Trigger an animation

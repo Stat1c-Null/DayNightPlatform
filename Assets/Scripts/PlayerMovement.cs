@@ -25,7 +25,7 @@ public class PlayerMovement : MonoBehaviour
     private int currentJumps;
     private int maxJumps;
     private float moveSpeed;
-    Animator animator;
+    public Animator animator;
     [Header("Day/Night Animators")]
     public RuntimeAnimatorController nightAnimator;
     public RuntimeAnimatorController dayAnimator;
@@ -49,7 +49,6 @@ public class PlayerMovement : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        animator = GetComponent<Animator>();
         maxJumps = dayMaxJumps;
         moveSpeed = dayMoveSpeed;
     }
@@ -66,11 +65,11 @@ public class PlayerMovement : MonoBehaviour
         //Turn player according to movement
         if (moveDir > 0f)
         {
-            transform.localScale = new Vector3(3f, 3f, 4f);
+            animator.transform.localScale = new Vector3(3f, 3f, 3f);
         }
         else if(moveDir < 0f)
         {
-            transform.localScale = new Vector3(-3f, 3f, 4f);
+            animator.transform.localScale = new Vector3(-3f, 3f, 3f);
         }
 
         //Jumping

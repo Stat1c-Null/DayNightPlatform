@@ -177,7 +177,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 6781777842560247990}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d8bf9e938c3b9c7489ce560d072915fc, type: 3}
+  m_Script: {fileID: 11500000, guid: d287688de8ef2324f81f55812f301fea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   PointA: {fileID: 8670131134403601924}
@@ -191,8 +191,8 @@ MonoBehaviour:
     m_Bits: 256
   IsHit: 0
   idleTimeAtPoint: 1
-  DistanceToExplode: 3
-  TimeToExplode: 1
+  DistanceToExplode: 4.5
+  TimeToExplode: 2.4
   explode:
     m_PersistentCalls:
       m_Calls:
