@@ -30,7 +30,6 @@ public class HurtPlayer : MonoBehaviour
             
             }
 
-            Debug.Log("Test 1");
             PlayerHealth.TakeDamage(damageGiven);
           }
     }

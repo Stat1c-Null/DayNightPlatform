@@ -63,7 +63,7 @@ public class PlayerHealth : MonoBehaviour
         PlayerMovement.swappedToNight.AddListener(sf);
     }
 
-    void HeartDelete(int h)
+    public void HeartDelete(int h)
     {
         switch (h)
         {
@@ -90,7 +90,6 @@ public class PlayerHealth : MonoBehaviour
             case 0:
                 death.Invoke();
                 deathStatic.Invoke();
-                Debug.Log("EQUI DEAD DEAD");
                 deathTrigger.GetComponent<DeathTrigger>().die();
                 //last hit and they are out send them to game over scene/screen
                 break;

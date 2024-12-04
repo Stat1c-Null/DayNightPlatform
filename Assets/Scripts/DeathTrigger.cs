@@ -5,6 +5,9 @@ using UnityEngine;
 public class DeathTrigger : MonoBehaviour
 {
     public Transform respawnPoint;
+    public PlayerHealth playerHealth;
+
+    
     public void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.CompareTag("Player"))
@@ -15,10 +18,8 @@ public class DeathTrigger : MonoBehaviour
 
     public void die()
     {
-        print("hit deathzone");
-
         GameObject Player = GameObject.FindWithTag("Player");
         Player.transform.position = new Vector3(respawnPoint.position.x, respawnPoint.position.y, respawnPoint.position.z);
-        
+        playerHealth.TakeDamage(playerHealth.damageGiven);
     }
 }
