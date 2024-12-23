@@ -18,6 +18,9 @@ public class BarController : MonoBehaviour
     public int pillowAmt;
     private static int pillowVal;
 
+    public PlayerHealth playerHealth;
+    private GameObject player;
+
     void Start()
     {
         heatMax = 30;
@@ -101,7 +104,14 @@ public class BarController : MonoBehaviour
 
     private void doDamage()
     {
-        //to be implemented
+        if (playerHealth == null)
+        { 
+            player = GameObject.FindWithTag("Player");
+            playerHealth = player.GetComponent<PlayerHealth>();
+        }
+
+        Debug.Log("Dealing damage");
+        playerHealth.TakeDamage(playerHealth.damageGiven);
     }
 
 

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PillowPickup : MonoBehaviour
 {
-    private bool isCollected = false;
+    public bool isCollected = false;
 
     void OnTriggerEnter2D(Collider2D other)
     {

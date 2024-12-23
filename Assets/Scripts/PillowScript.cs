@@ -56,6 +56,8 @@ public class PillowScript : MonoBehaviour
         foreach (GameObject obj in pillowSpawners)
             pillows.Add(Instantiate(pillowPrefab, obj.transform.position, obj.transform.rotation, obj.transform));
 
+                
+
     }
 
     public void RemovePillows()
