@@ -15,6 +15,7 @@ public class EnemyDeath : MonoBehaviour
     {
         if (other.gameObject.CompareTag("FeetOfPain"))
         {
+            Debug.Log("Killed the enemy");
             enemy.IsHit = true;
             StartCoroutine(WaitForAnimationUpdate());
             enemy.Death();

@@ -191,9 +191,9 @@ MonoBehaviour:
     m_Bits: 256
   IsHit: 0
   collider: {fileID: 4870574009929627738}
-  idleTimeAtPoint: 1
-  DistanceToExplode: 4.5
-  TimeToExplode: 2.4
+  idleTimeAtPoint: 2
+  DistanceToExplode: 2
+  TimeToExplode: 3
   explode:
     m_PersistentCalls:
       m_Calls:
