@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class BarController : MonoBehaviour
 {
-    private int heatMax;
-    private int sleepMax;
+    public int heatMax;
+    public int sleepMax;
     public static int heatCount;
     public static int sleepCount;
     private double heatTick;
